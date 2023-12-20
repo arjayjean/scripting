@@ -33,21 +33,34 @@ def create(repo, project_type):
     
     # Python Project Folder
     commands_py = [
+        # Creates a directory on your local system for your project
         ['mkdir',f'{new_directory}'],
+        # Creates a file for your project in the directory that was previously created
         ['touch',f'{new_directory}/{repo}.py'],
+        # Creates a file on your home directory with a "hard link" to the file in your project directory 
         ['ln', f'{new_directory}/{repo}.py', f'{repo}.py'],
+        # Provides the previously created file permissions to be executed
         ['chmod', '+x', f'{repo}.py'],
+        # Turns your directory into a Git repository
         ['git', 'init',f'{new_directory}'],
+        # Opens Visual Studio Code
         ['code', f'{new_directory}/']
         ]
 
     # Bash Script Project Folder
     commands_bash = [
+        # Creates a directory on your local system for your project
         ['mkdir',f'{new_directory}'],
+        # Creates a copy of a file with a prefilled shebang (#!/bin/bash); 
+        # Indicates to the system how we want this file to be executed, which will be using the absolute path to our Bash executable.
         ['cp', 'prompts/bash.sh', f'{new_directory}/{repo}.sh'],
+        # Creates a file on your home directory with a "hard link" to the file in your project directory 
         ['ln', f'{new_directory}/{repo}.sh', f'{repo}.sh'],
+        # Provides the previously created file permissions to be executed
         ['chmod', '+x',f'{repo}.sh'],
+        # Turns your directory into a Git repository
         ['git', 'init',f'{new_directory}'],
+        # Opens Visual Studio Code
         ['code', f'{new_directory}/']
         ]
 
